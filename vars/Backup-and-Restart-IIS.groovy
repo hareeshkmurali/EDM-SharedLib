@@ -1,13 +1,13 @@
 // myScript.groovy
 
 def call(Map scriptParams) {
-    def buildNumber = scriptParams.BuildNumber
-    def userName = scriptParams.UserName
-    def password = scriptParams.Password
-    def computerName = scriptParams.ComputerName
-    def siteName = scriptParams.SiteName
-    def sourcePath = scriptParams.SourcePath
-    def directoryPath = scriptParams.DirectoryPath
+    def BuildNumber = scriptParams.BuildNumber
+    def UserName = scriptParams.UserName
+    def Password = scriptParams.Password
+    def ComputerName = scriptParams.ComputerName
+    def SiteName = scriptParams.SiteName
+    def SourcePath = scriptParams.SourcePath
+    def DirectoryPath = scriptParams.DirectoryPath
 
     // PowerShell script content
     def powerShellScript = """
