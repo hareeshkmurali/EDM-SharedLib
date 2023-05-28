@@ -1,10 +1,17 @@
 Param(
+    [Parameter(Mandatory=$true)]
     [string]$BuildNumber,
+    [Parameter(Mandatory=$true)]
     [string]$UserName,
+    [Parameter(Mandatory=$true)]
     [string]$Password,
+    [Parameter(Mandatory=$true)]
     [string]$ComputerName,
+    [Parameter(Mandatory=$true)]
     [string]$SiteName,
+    [Parameter(Mandatory=$true)]
     [string]$SourcePath,
+    [Parameter(Mandatory=$true)]
     [string]$DirectoryPath
 )
 
