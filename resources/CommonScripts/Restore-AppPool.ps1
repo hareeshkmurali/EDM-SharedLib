@@ -1,7 +1,11 @@
 Param(
+    [Parameter(Mandatory=$true)]
     [string]$UserName,
+    [Parameter(Mandatory=$true)]
     [string]$Password,
+    [Parameter(Mandatory=$true)]
     [string]$ComputerName,
+    [Parameter(Mandatory=$true)]
     [string]$SiteName
 )
 
