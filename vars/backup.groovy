@@ -8,5 +8,5 @@ def call(String BuildNumber, String UserName, def Password, String ComputerName,
     println Passwordd
     println Pass
     writeFile file: 'backup.ps1', text: "${libraryResource 'CommonScripts/Backup-and-Restart-IIS.ps1'}"
-    bat "powershell -ExecutionPolicy ByPass -File backup.ps1 $BuildNumber $UserName $Passwordd $ComputerName $SiteName $SourcePath $DirectoryPath"
+    bat "powershell -ExecutionPolicy ByPass -File backup.ps1 $BuildNumber $UserName $Pass $ComputerName $SiteName $SourcePath $DirectoryPath"
 }
