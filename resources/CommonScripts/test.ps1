@@ -1,1 +1,1 @@
-Write-Host "$sample"
+Write-Host "$psw1"
