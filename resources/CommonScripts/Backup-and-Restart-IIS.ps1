@@ -16,6 +16,7 @@ Param(
 )
 
 $ErrorActionPreference = "Stop"
+Write-Output $Password
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
 
