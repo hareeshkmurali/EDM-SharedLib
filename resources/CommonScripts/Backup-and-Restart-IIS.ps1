@@ -1,7 +1,5 @@
 Param(
     [Parameter(Mandatory=$true)]
-    [string]$UserName,
-    [Parameter(Mandatory=$true)]
     [string]$ComputerName,
     [Parameter(Mandatory=$true)]
     [string]$SiteName,
@@ -14,8 +12,9 @@ Param(
 $ErrorActionPreference = "Stop"
 $BuildNumber = $env:BUILD_NUMBER
 $Password = $env:IISPASWD
+$uname = $env:UserName
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
-$credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
+$credObject = New-Object System.Management.Automation.PSCredential ($uname, $secStringPassword)
 
 Invoke-Command -ComputerName $ComputerName -Credential $credObject -ScriptBlock {
     param($BuildNumber, $SiteName, $SourcePath, $DirectoryPath)
