@@ -13,7 +13,7 @@ $ErrorActionPreference = "Stop"
 $BuildNumber = $env:BUILD_NUMBER
 $Password = $env:IISPASWD
 $uname = $env:UserName
-$secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
+$secStringPassword = ConvertTo-SecureString ${env:IISPASWD} -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential (${env:UserName}, $secStringPassword)
 
 Invoke-Command -ComputerName $ComputerName -Credential $credObject -ScriptBlock {
