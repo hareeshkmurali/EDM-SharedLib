@@ -1,7 +1,5 @@
 Param(
     [Parameter(Mandatory=$true)]
-    [string]$BuildNumber,
-    [Parameter(Mandatory=$true)]
     [string]$UserName,
     [Parameter(Mandatory=$true)]
     [string]$ComputerName,
@@ -20,7 +18,7 @@ $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
 
 Invoke-Command -ComputerName $ComputerName -Credential $credObject -ScriptBlock {
-    param($BuildNumber, $SiteName, $SourcePath, $DirectoryPath)
+    param(${env.BUILD_NUMBER}, $SiteName, $SourcePath, $DirectoryPath)
 
     $Files = Get-ChildItem -Path $DirectoryPath -File
     $FilesSorted = $Files | Sort-Object -Property CreationTime -Descending
@@ -32,9 +30,9 @@ Invoke-Command -ComputerName $ComputerName -Credential $credObject -ScriptBlock 
     Restart-WebAppPool $appPool
 
     $source="$SourcePath"
-    $dest="$DirectoryPath\\Archive-$BuildNumber.zip"
+    $dest="$DirectoryPath\\Archive-${env.BUILD_NUMBER}.zip"
     Add-Type -assembly "system.io.compression.filesystem"
     [io.compression.zipfile]::CreateFromDirectory($source, $dest)
-} -ArgumentList $BuildNumber, $SiteName, $SourcePath, $DirectoryPath
+} -ArgumentList ${env.BUILD_NUMBER}, $SiteName, $SourcePath, $DirectoryPath
 
 
