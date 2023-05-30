@@ -3,7 +3,6 @@ Param(
     [string]$BuildNumber,
     [Parameter(Mandatory=$true)]
     [string]$UserName,
-    
     [Parameter(Mandatory=$true)]
     [string]$ComputerName,
     [Parameter(Mandatory=$true)]
@@ -16,7 +15,7 @@ Param(
 
 $ErrorActionPreference = "Stop"
 
-$Password = $env:POWERSHELL_ARGUMENT
+$Password = $env:SECRET
 Write-Output $Password
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
