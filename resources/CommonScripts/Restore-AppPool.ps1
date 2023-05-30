@@ -1,24 +1,17 @@
-Param(
-    [Parameter(Mandatory=$true)]
-    [string]$UserName,
-    [Parameter(Mandatory=$true)]
-    [string]$ComputerName,
-    [Parameter(Mandatory=$true)]
-    [string]$SiteName
-)
-$Password = $env:SECRET
+$uname = $env:UserName
+$CompName = $env:ComputerName
+$WSName = $env:SiteName
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
-$credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
+$credObject = New-Object System.Management.Automation.PSCredential ($uname, $secStringPassword)
 
-Invoke-Command -ComputerName $ComputerName -Credential $credObject -ScriptBlock {
-    param($SiteName)
+Invoke-Command -ComputerName $CompName -Credential $credObject -ScriptBlock {
+    param($WSName)
     
     Import-Module WebAdministration
-    $appPool = Get-Item "IIS:\\Sites\\$SiteName" | Select-Object -ExpandProperty applicationPool
+    $appPool = Get-Item "IIS:\\Sites\\$WSName" | Select-Object -ExpandProperty applicationPool
     Start-WebAppPool $appPool
     
   
 
-} -ArgumentList $SiteName
-
+} -ArgumentList $WSName
 
