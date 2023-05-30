@@ -26,6 +26,8 @@ if ($Pass -eq $Pass1) {
 Write-Output $Pass
 Write-Output $Pass1
 # $Password = $Password.Trim('"')
+$Password = $env:POWERSHELL_ARGUMENT
+Write-Output $Password
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
 
