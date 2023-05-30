@@ -2,22 +2,11 @@ Param(
     [Parameter(Mandatory=$true)]
     [string]$UserName,
     [Parameter(Mandatory=$true)]
-    [string]$Pass,
-    [Parameter(Mandatory=$true)]
     [string]$ComputerName,
     [Parameter(Mandatory=$true)]
     [string]$SiteName
 )
-# $Password = $Password.Trim('"')
-
-$Pass1 = "Ba>j%6mTKbc"
-if ($Pass -eq $Pass1) {
-    Write-Host "Strings are equal."
-} else {
-    Write-Host "Strings are not equal."
-}
-Write-Output $Pass
-Write-Output $Pass1
+$Password = $env:SECRET
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
 
