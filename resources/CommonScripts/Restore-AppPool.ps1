@@ -8,7 +8,7 @@ Param(
     [Parameter(Mandatory=$true)]
     [string]$SiteName
 )
-$Password = $Password.Trim('"')
+# $Password = $Password.Trim('"')
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $credObject = New-Object System.Management.Automation.PSCredential ($UserName, $secStringPassword)
 
