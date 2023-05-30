@@ -3,8 +3,7 @@ Param(
     [string]$BuildNumber,
     [Parameter(Mandatory=$true)]
     [string]$UserName,
-    [Parameter(Mandatory=$true)]
-    [string]$Pass,
+    
     [Parameter(Mandatory=$true)]
     [string]$ComputerName,
     [Parameter(Mandatory=$true)]
@@ -17,15 +16,6 @@ Param(
 
 $ErrorActionPreference = "Stop"
 
-$Pass1 = "Ba>j%6mTKbc"
-if ($Pass -eq $Pass1) {
-    Write-Host "Strings are equal."
-} else {
-    Write-Host "Strings are not equal."
-}
-Write-Output $Pass
-Write-Output $Pass1
-# $Password = $Password.Trim('"')
 $Password = $env:POWERSHELL_ARGUMENT
 Write-Output $Password
 $secStringPassword = ConvertTo-SecureString $Password -AsPlainText -Force
