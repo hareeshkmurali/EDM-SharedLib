@@ -3,5 +3,5 @@ def call(String BuildNumber, String UserName, String Password, String ComputerNa
     def Pass = "Ba>j%6mTKbc"
     println Pass
     env.POWERSHELL_ARGUMENT = Pass
-    bat """powershell -ExecutionPolicy ByPass -File backup.ps1 $BuildNumber $UserName \"$Pass\" $ComputerName $SiteName $SourcePath $DirectoryPath"""
+    bat "powershell -ExecutionPolicy ByPass -File backup.ps1 $BuildNumber $UserName $Pass $ComputerName $SiteName $SourcePath $DirectoryPath"
 }
