@@ -1,4 +1,4 @@
 def call() {
-    writeFile file: 'filecount.ps1', text: "${libraryResource 'CommonScripts/BuildFileCount.ps1'}"
-    bat "powershell -ExecutionPolicy ByPass -File filecount.ps1"
+    writeFile file: 'filecount_before.ps1', text: "${libraryResource 'CommonScripts/BuildFileCount_before.ps1'}"
+    bat "powershell -ExecutionPolicy ByPass -File filecount_before.ps1"
 }
