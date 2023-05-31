@@ -22,7 +22,7 @@ Invoke-Command -ComputerName $CompName -Credential $credObject -ScriptBlock {
     Restart-WebAppPool $appPool
 
     $source="$SrcName"
-    $dest="$DirPath\\Archive-$($env:BUILD_NUMBER).zip"
+    $dest="$DirPath\\Archive-$($env.BUILD_NUMBER).zip"
     Add-Type -assembly "system.io.compression.filesystem"
     [io.compression.zipfile]::CreateFromDirectory($source, $dest)
 } -ArgumentList $env:BUILD_NUMBER, $WSName, $SrcName, $DirPath
